@@ -1,0 +1,41 @@
+.react-autosuggest__container{
+	float: left;
+	width: 95%;
+	overflow:auto; 
+}
+.react-autosuggest__container input{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgba(206,44,56,0.5);
+	width: 100%;
+
+}
+.react-autosuggest__section-title{
+	font-weight: 600;
+	font-style: italic;
+}
+.react-autosuggest__section-container:nth-child(odd) {
+    background: rgba(206,44,56,0.1);
+}
+.react-autosuggest__section-container:nth-child(even) {
+    background: rgba(55,44,56,0.1);
+}
+.search-input-container{
+	border: 1px solid rgba(206,44,56,0.8);
+	padding: 2px;
+	margin-left: 15px;
+	border-radius: 5px;
+	
+}  
+.fa {
+	color : rgba(206,44,56,0.9);
+}  
+.fa-search {
+	margin-top: 4px;
+}
+.serch-string{
+	font-weight: 600;
+	font-style: italic;
+	color : rgba(206,44,56,1);
+}
