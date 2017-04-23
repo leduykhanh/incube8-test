@@ -37,7 +37,7 @@ const routingMiddleware = routerMiddleware(browserHistory)
           log: true
         }),
         applyMiddleware(endpointMiddleware,thunk,apiMiddleware, createLogger(),routingMiddleware),
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+          // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
       )
     );

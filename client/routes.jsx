@@ -8,7 +8,7 @@ import { UserAuthWrapper } from 'redux-auth-wrapper'
 import authenticationType from './actions/actionTypes';
 import { replace } from 'react-router-redux'; 
 
-// Redirects to /login by default
+// Redirects to / by default
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth.user, // how to get the user state
   failureRedirectPath: '/',
@@ -38,7 +38,6 @@ const UserIsNotAuthenticated = UserAuthWrapper({
 });
 
 export const getRoutes = (store) => {
-    // console.log(store.dispatch);
     let routeConfig = [
 
         {
@@ -46,15 +45,13 @@ export const getRoutes = (store) => {
             component: Layout,
             indexRoute: {
                 getComponent: (nextState,cb)=>{
-                                        //fetchData({},store.dispatch);
                                         cb(null, UserIsNotAuthenticated(Home));
                                     }
             },
             childRoutes: [
                 {
                     path: 'bus',
-                    getComponent: (nextState,cb)=>{
-                                        
+                    getComponent: (nextState,cb)=>{                                       
                                         cb(null, UserIsAuthenticated(Buspage));
                                     }
                 },

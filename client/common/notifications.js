@@ -25,7 +25,7 @@ import Notifications from 'react-notification-system-redux';
 };
 
  const notify_info = (dispatch,title,message,action) => {
-
+  
   dispatch(Notifications.info({
        // uid: 'once-please', // you can specify your own uid if required
       title: title,
@@ -36,7 +36,6 @@ import Notifications from 'react-notification-system-redux';
   }))
 };
 const notify_success = (dispatch,title,message,action) => {
-
   dispatch(Notifications.success({
        // uid: 'once-please', // you can specify your own uid if required
       title: title,
