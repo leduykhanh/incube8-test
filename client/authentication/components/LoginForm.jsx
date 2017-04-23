@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
 
                 <div className="vcenter col-xs-6 col-xs-offset-3 signup-form">
                     <h1 className="text-center header-text-primary">LOGIN</h1>
+                    <hr />
                     <div className="space2x"></div>
                     <div className="horizontal-split-panel text-left">
                         <div className="col-xs-12 vcenter">

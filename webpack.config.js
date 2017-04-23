@@ -1,4 +1,13 @@
+var webpack = require('webpack');
 var path = require('path');
+var fs = require('fs')
+var BUILD_DIR = path.resolve(__dirname, 'static');
+var APP_DIR = path.resolve(__dirname, 'client');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const babelSettings = JSON.parse(fs.readFileSync(".babelrc"));
+babelSettings.plugins.push("transform-react-inline-elements");
+babelSettings.plugins.push("transform-react-constant-elements");
 commonSassPaths = [path.resolve(__dirname, './sass/common') ]
 module.exports = {
   entry: [
@@ -19,25 +28,21 @@ module.exports = {
     }],
     rules : [
       {
-        exclude: /node_modules/,
         loaders : ['babel-loader'],
+        test : /\.jsx?/,
+        exclude: /node_modules/
+      },
+      {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader?sourceMap",
-            {
-                loader:"sass-loader",
-                options:
-                {
-                    sourceMap: true,
-                    includePaths :commonSassPaths
-                }
-            }]
-
+        loader: ExtractTextPlugin.extract(
+        {
+            loader: ["css-loader","sass-loader"]
+        })
       }
-
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     modules: ['node_modules',
            'sass',
          path.resolve(__dirname,'node_modules'),
@@ -51,5 +56,10 @@ module.exports = {
     historyApiFallback: true,
     contentBase: './static/',
     hot: true,
-  }
+  },
+  plugins:[
+    new ExtractTextPlugin({
+            filename: 'css/bundle.css',
+        })
+  ]
 };

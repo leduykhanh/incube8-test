@@ -68,7 +68,6 @@ const mergeProps= (stateProps,dispatchProps,ownProps)=>{
 }
 const validate = values =>{
     let errors = {};
-    console.log(values);
     if(!addErrorIfFound(values.email,required,errors,"email"))
         addErrorIfFound(values.email,email,errors,"email");
     addErrorIfFound(values.password,required,errors,"password");

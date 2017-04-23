@@ -19,7 +19,6 @@ class BusPage extends React.Component {
         } else { 
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
-        console.log(this.props);
       this.props.fetchBusStops(this.props.sessionId);
     }
 
@@ -35,7 +34,7 @@ class BusPage extends React.Component {
           <h1>Bus page</h1>
           <h5>Your current location: Latitude {this.state.lat}, Longitude {this.state.lon}</h5>
           <hr />
-          <BusStopList data={this.props.data} />
+          <BusStopList data={this.props.data} currentLat={this.state.lat} currentLon={this.state.lon} />
         </div>
 
         );

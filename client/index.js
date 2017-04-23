@@ -15,6 +15,9 @@ import {  routerMiddleware } from 'react-router-redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import {REHYDRATE} from 'redux-persist/constants'
 import endpointMiddleware from './middlewares/endpointMiddleware'
+import Moment from 'moment'
+import momentLocalizer from 'react-widgets/lib/localizers/moment'
+momentLocalizer(Moment);
 
 
 const createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);

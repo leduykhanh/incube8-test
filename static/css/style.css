@@ -11,3 +11,19 @@
     background-image: linear-gradient(#4f93ce,#285f8f);
     border: 1px solid #285f8f;
 }
+.bus-number {
+	color:red;
+	font-weight: 800;
+}
+.table-header {
+    background-color: grey;
+    font-weight: 800;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+.bus-stop-item{
+    display : flex;
+    align-items : center;
+}
+.bus-stop-item:nth-child(even) {background: #CCC}
+.bus-stop-item:nth-child(odd) {background: #FFF}

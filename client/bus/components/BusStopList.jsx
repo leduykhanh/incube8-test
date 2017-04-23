@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Modal} from 'react-bootstrap'
 import AddBusForm from './AddBusForm'
+import {getDistanceFromLatLonInKm} from '../../common/util'
 
 class BusStopList extends React.Component {
     constructor (props) {
@@ -32,7 +33,7 @@ class BusStopList extends React.Component {
     renderHeader(){
 
         return (
-            <div className="row">
+            <div className="row table-header">
                 <div className="col-xs-3">Number</div>
                 <div className="col-xs-3">Distance</div>
                 <div className="col-xs-6 text-center">Action</div>
@@ -40,17 +41,17 @@ class BusStopList extends React.Component {
         );
     }
     render() {
-        let {data} = this.props;
+        let {data,currentLat,currentLon} = this.props;
         let busStopGrid = Array();
         for ( let i=0; i < data.length; i++) {
             let item = data[i];
-            busStopGrid.push( <div key={i} className="row">
-                <div className="col-xs-3">{item.name}</div>
-                <div className="col-xs-3">{item.lat}</div>
+            busStopGrid.push( <div key={i} className="row bus-stop-item">
+                <div className="col-xs-3 bus-number">{item.name}</div>
+                <div className="col-xs-3">{getDistanceFromLatLonInKm(item.lat,item.lon,currentLat,currentLon)} km</div>
                 <div className="col-xs-6">
-                    <Button bsStyle="info" onClick={this.openBusList.bind(this)} >Show buses</Button>
-                    <Button bsStyle="success" onClick={this.openAddBus.bind(this, item.name)}>Add bus</Button>
-                    <Button>View map</Button></div>
+                    <Button className="btn-raised action-button"bsStyle="info" onClick={this.openBusList.bind(this)} >Show buses</Button>
+                    <Button className="btn-raised action-button" bsStyle="success" onClick={this.openAddBus.bind(this, item.name)}>Add bus</Button>
+                    <Button className="btn-raised action-button">View map</Button></div>
             </div>);
 
                 }
@@ -60,10 +61,10 @@ class BusStopList extends React.Component {
                 {this.renderHeader()}
                 {busStopGrid}
                 <Modal show={this.state.showBusListModal} onHide={this.closeBustList.bind(this)}>
-                    23: 23mins <br />
-                    23: 23mins <br />
-                    23: 23mins <br />
-                    23: 23mins <br />
+                    <span className="bus-number">23</span>: 23mins <br />
+                    <span className="bus-number">23</span>: 23mins <br />
+                    <span className="bus-number">23</span>: 23mins <br />
+                    <span className="bus-number">23</span>: 23mins <br />
                 </Modal>
                 <Modal show={this.state.showAddBusModal} onHide={this.closeAddBus.bind(this)}>
                     <AddBusForm bustopName={this.state.bustopName}/>

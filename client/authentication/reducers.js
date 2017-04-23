@@ -12,15 +12,7 @@ const handleUserData = (state,action) => {
     return _data;
 }
 
-const handleCompanyData = (state,action) => {
 
-    let {entities,result} = action.payload;
-    let company = preprocessCompanyData(entities.company[result.data]);
-    let _data = Object.assign({}, state, {
-        "company": company
-      })
-    return _data;
-}
 const handleLoginData = (state,action) => {
 
     let data = Object.assign({}, state, {
@@ -30,14 +22,7 @@ const handleLoginData = (state,action) => {
     return data;
 }
 export default handleActions({
-    // [Type.LOGIN_FAIL]: (state=[],action) => {
-    //     console.log(action);
-    //     let error = action.payload.result.non_field_errors[0];
-    //     return Object.assign({}, state, {
-    //         "form_error":error
-    //       })
-    //
-    // },
+
     [Type.CLEAR_RESET_PASSWORD_DATA]: (state=[],action) =>{
         return Object.assign({}, state, {"reset_password_token":undefined,"uid":undefined})
     },
@@ -57,16 +42,7 @@ export default handleActions({
         state = Object.assign({},state,{"afterLoginURL":undefined});
         return handleLoginData(state,action);
     },
-    // [UserType.UPDATE_USER_SUCCESS]: (state,action) => {
-    //     return handleUserData(state,action);
-    // },
 
-    // [UserType.LOAD_USER_SUCCESS]: (state,action) => {
-    //     return handleUserData(state,action);
-    // },
-    // [UserType.UPDATE_COMPANY_SUCCESS]: (state,action) => {
-    //     return handleCompanyData(state,action);
-    // },
     [Type.LOGOUT_SUCCESS]: (state,action) => {
         return Object.assign({}, state, {
             "user": undefined,
@@ -89,7 +65,6 @@ export default handleActions({
         return Object.assign({}, state, {[StoreFields.refreshTokenPromise]: 'failed'});
     },
     [Type.REFRESH_TOKEN_SUCCESS]: (state,action) => {
-        c
         return  Object.assign({}, state, {
             "sessionId":action.payload.result.sessionId,
             [StoreFields.refreshTokenPromise]:undefined,

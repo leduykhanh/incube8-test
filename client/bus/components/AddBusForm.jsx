@@ -3,6 +3,7 @@ import React from 'react';
 import {render} from 'react-dom'
 import {Field, reduxForm,SubmissionError} from 'redux-form'
 import {renderTextField, renderPasswordField, renderEmailField, FieldFormControl,FieldDateTimeControl,FieldDateControl} from '../../common/components/FormElements'
+import {required,isImage} from '../../common/formValidation'
 
 class AddBusForm extends React.Component {
 
@@ -23,16 +24,16 @@ class AddBusForm extends React.Component {
 
                 <div className="add-bus-form">
                     <h1 className="text-center header-text-primary">Add bus</h1>
-                    <h2>bus stop {this.props.bustopName}</h2>
+                    <h2 className="text-center">bus stop <span className="bus-number">{this.props.bustopName} </span></h2>
                     <div className="space2x"></div>
                     <div className="horizontal-split-panel text-left">
                         <div className="col-xs-12 add-bus-form">
                             <div className="col-xs-12">
-                                <form onSubmit={handleSubmit} className="auth-form">
-                                    <Field name="email" type="number"
+                                <form onSubmit={handleSubmit} className="addbus-form">
+                                    <Field name="number" type="number" className="required bus-number" validate={[required]}
                                            component={FieldFormControl} label="Bus number"/>
-                                    <Field name="password" type="password"
-                                           component={FieldFormControl} label="Time start"
+                                    <Field name="time-start" options={{ "time": true, "defaultValue": new Date()}}
+                                           component={FieldDateControl} label="Time start" className="required" validate={[required]}
                                            help="this is to calculate arrival info"/>
                                     <div className="form-group text-center">
                                         <button type="submit" className="btn-raised action-button">Add</button>
