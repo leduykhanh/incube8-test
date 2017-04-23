@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Modal} from 'react-bootstrap'
 import AddBusForm from './AddBusForm'
 import {getDistanceFromLatLonInKm} from '../../common/util'
+import Map,{Marker} from 'google-maps-react'
 
 class BusStopList extends React.Component {
     constructor (props) {
@@ -9,6 +10,7 @@ class BusStopList extends React.Component {
         this.state={ 
             showBusListModal:false,
             showAddBusModal:false,
+            showMapModal:false,
             bustopName: ""
              };
 
@@ -19,6 +21,7 @@ class BusStopList extends React.Component {
     openBusList() {
         this.setState({ showBusListModal: true });
       }
+
     closeAddBus() {
         this.setState({ showAddBusModal: false });
       }
@@ -28,7 +31,12 @@ class BusStopList extends React.Component {
             bustopName: name
          });
       }
-  
+    closeMap() {
+        this.setState({ showMapModal: false });
+      }
+    openMap() {
+        this.setState({ showMapModal: true });
+      }  
 
     renderHeader(){
 
@@ -51,7 +59,7 @@ class BusStopList extends React.Component {
                 <div className="col-xs-6">
                     <Button className="btn-raised action-button"bsStyle="info" onClick={this.openBusList.bind(this)} >Show buses</Button>
                     <Button className="btn-raised action-button" bsStyle="success" onClick={this.openAddBus.bind(this, item.name)}>Add bus</Button>
-                    <Button className="btn-raised action-button">View map</Button></div>
+                    <Button className="btn-raised action-button" onClick={this.openMap.bind(this)}>View map</Button></div>
             </div>);
 
                 }
@@ -68,6 +76,14 @@ class BusStopList extends React.Component {
                 </Modal>
                 <Modal show={this.state.showAddBusModal} onHide={this.closeAddBus.bind(this)}>
                     <AddBusForm onSubmit={this.closeAddBus.bind(this)} bustopName={this.state.bustopName}/>
+                </Modal>
+                <Modal show={this.state.showMapModal} onHide={this.closeMap.bind(this)}>
+                    <Map google={window.google} style={{width: '100%', height: '100%', position: 'relative'}}>
+                          <Marker
+                            name={'You are here'}
+                            position={{lat: currentLat, lng: currentLon}} />
+                          <Marker />
+                    </Map>
                 </Modal>
             </div>
         );

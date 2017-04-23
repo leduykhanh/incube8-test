@@ -31,6 +31,7 @@
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "fs": "0.0.1-security",
+    "google-maps-react": "^1.0.19",
     "lodash": "^3.10.1",
     "md5": "^2.2.1",
     "moment": "^2.18.1",
