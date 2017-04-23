@@ -53,6 +53,7 @@ class BusStopList extends React.Component {
     }
     render() {
         let {data,currentLat,currentLon} = this.props;
+        let myLatLng = {lat : currentLat, lng: currentLon};
         let busStopGrid = Array();
         for ( let i=0; i < data.length; i++) {
             let item = data[i];
@@ -81,12 +82,17 @@ class BusStopList extends React.Component {
                     <AddBusForm onSubmit={this.closeAddBus.bind(this)} bustopName={this.state.bustopName}/>
                 </Modal>
                 <Modal show={this.state.showMapModal} onHide={this.closeMap.bind(this)}>
-                    <Map google={window.google} style={{width: '100%', height: '100%', position: 'relative'}}>
-                          <Marker
-                            name={'You are here'}
-                            position={{lat: currentLat, lng: currentLon}} />
-                          <Marker />
-                    </Map>
+                    <div style={{width: '100%', height: '100%', position: 'relative'} } >
+                        <Map google={window.google}
+                            initialCenter = {myLatLng}
+                            zoom = {20}
+                            mapTypeId = {google.maps.MapTypeId.ROADMAP} >
+                              <Marker
+                                name={'You are here'}
+                                position={{lat: currentLat, lng: currentLon}} />
+                              <Marker />
+                        </Map>
+                    </div>
                 </Modal>
             </div>
         );

@@ -15,5 +15,6 @@
 ## Disclamer:
 - This reuses some previous codes
 - The css is minimal due to time constraints
+- The backend is not 100% working, it's for frontend demo only
 
 
