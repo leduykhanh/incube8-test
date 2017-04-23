@@ -3,15 +3,15 @@ import { routerReducer } from 'react-router-redux'
 import { handleActions } from 'redux-actions';
 import Type from '../actions/actionTypes'
 import authenticationReducers from '../authentication/reducers'
+import busReducers from '../bus/reducers'
 import { reducer as formReducer } from 'redux-form'
 
 const dataLoad = (state = [], action) => {
 	console.log("action",action);
   switch (action.type) {
-    case "data.jsonGET_ALL_DATA_SUCCESS":
-      console.log("reducers called",action.payload.result);
+    case "dataGET_ALL_DATA_SUCCESS":
       return Object.assign({},state,action.payload.result)
-    case "data.jsonGET_ALL_DATA_FAIL":
+    case "dataGET_ALL_DATA_FAIL":
       // console.log("reducers failed");
     default:
       return state
@@ -20,7 +20,8 @@ const dataLoad = (state = [], action) => {
 const rootReducer = combineReducers({
   state: (state = {}) => state,
   routing: routerReducer,
-  dataLoad,
+  // dataLoad,
+  dataLoad:busReducers,
   auth: authenticationReducers,
   form:formReducer
 });

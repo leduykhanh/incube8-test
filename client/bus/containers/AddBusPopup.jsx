@@ -10,9 +10,9 @@ class AddBusPopup extends React.Component{
 
 
     render(){
-        let thankyouForm = <AddBusForm onSubmit={this.props.actionClosePopup}/>
+        let addBusForm = <AddBusForm onSubmit={this.props.actionClosePopup}/>
 
-        return <div className="authentication-popup">{thankyouForm}</div>
+        return <div className="authentication-popup">{addBusForm}</div>
     }
 }
 

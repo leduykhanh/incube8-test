@@ -67,7 +67,7 @@ class BusStopList extends React.Component {
                     <span className="bus-number">23</span>: 23mins <br />
                 </Modal>
                 <Modal show={this.state.showAddBusModal} onHide={this.closeAddBus.bind(this)}>
-                    <AddBusForm bustopName={this.state.bustopName}/>
+                    <AddBusForm onSubmit={this.closeAddBus.bind(this)} bustopName={this.state.bustopName}/>
                 </Modal>
             </div>
         );

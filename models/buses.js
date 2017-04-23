@@ -78,44 +78,5 @@ busesModel.getOne = function(id){
 	
 }
 
-//function to rate single bus by its id.
-busesModel.rate = function(id, ratting){
-	var results = q.defer();
-	ratting = parseInt(ratting);
-	var error=false;
-
-	if(!id){
-		results.reject({status:'error', error:'bus Id not supplied.'});
-		error = true;
-	}
-	if(!ratting){
-		results.reject({status:'error', error:'User ratting not supplied.'});
-		error = true;
-	}
-
-	if(ratting<0 || ratting>5){
-		results.reject({status:'error', error:'User ratting is out of range.'});
-		error = true;
-	}
-
-	if(error==false){
-		bus.findOne({_id:id},function(err, dbbus) {
-			if (err){
-				results.reject(err);
-			} 
-
-			dbbus.ratings.push(ratting)
-			
-			dbbus.markModified('array');
-	    	dbbus.save();
-
-			results.resolve(dbbus);
-		});
-	}
-	
-
-	return results.promise;
-	
-}
 
 module.exports = busesModel;

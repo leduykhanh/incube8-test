@@ -15,7 +15,6 @@ class AddBusForm extends React.Component {
 
     render() {
         const {handleSubmit, handleSignup,handleForgetPassword,error} = this.props;
-        console.log("error login form", error);
         try {
 
             let options = { "time": false, "defaultValue": new Date()};

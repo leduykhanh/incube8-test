@@ -38,12 +38,12 @@ busStops.getOne = function (req, res) {
 };
 
 // controller that handles bus rate request
-busStops.rate = function (req, res) {
+busStops.add = function (req, res) {
 	
 	var busId = req.body.busId;
 	var rating = req.body.rating;
 
-	var busStopsData = busStopModel.rate(busId, rating);
+	var busStopsData = busStopModel.add(busId, rating);
 	busStopsData.then(function(data){
 		var response = {};
 		response.status='success';

@@ -5,7 +5,8 @@ var q = require('q');
 var busStopschema = new mongoose.Schema({
 	  name: { type: String }, 
 	  lat: { type: Number }, 
-	  lon: { type: Number }
+	  lon: { type: Number },
+	  buses: []
 });
 
 var busStop = mongoose.model('busStops', busStopschema);
@@ -53,5 +54,45 @@ busStopsModel.get = function(skip, limit){
 	return results.promise;
 	
 }
+//function to add single bus by its id.
+busStopsModel.add = function(id, buses){
+	var results = q.defer();
+	buses = parseInt(buses);
+	var error=false;
+
+	if(!id){
+		results.reject({status:'error', error:'bus Id not supplied.'});
+		error = true;
+	}
+	if(!buses){
+		results.reject({status:'error', error:'User buses not supplied.'});
+		error = true;
+	}
+
+	// if(buses<0 || buses>5){
+	// 	results.reject({status:'error', error:'User buses is out of range.'});
+	// 	error = true;
+	// }
+
+	if(error==false){
+		bus.findOne({_id:id},function(err, dbbus) {
+			if (err){
+				results.reject(err);
+			} 
+
+			dbbus.buses.push(buses)
+			
+			dbbus.markModified('array');
+	    	dbbus.save();
+
+			results.resolve(dbbus);
+		});
+	}
+	
+
+	return results.promise;
+	
+}
+
 
 module.exports = busStopsModel;

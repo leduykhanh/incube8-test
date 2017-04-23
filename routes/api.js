@@ -7,10 +7,10 @@ var routesAPI = function(app){
 	app.post('/user/auth', users.auth);
 	app.get('/user/logout', helpers.isAuthenticated, users.logout);
 
-	//video routes
+	//bus routes
 	app.get('/busStops', helpers.isAuthenticated, busStops.get);
-	app.get('/video', helpers.isAuthenticated, busStops.getOne);
-	app.post('/video/ratings', helpers.isAuthenticated, busStops.rate);
+	app.get('/busStop', helpers.isAuthenticated, busStops.getOne);
+	app.post('/bus/add', helpers.isAuthenticated, busStops.add);
 }
 
 
