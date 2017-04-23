@@ -4,7 +4,7 @@ import {render} from 'react-dom'
 import {Field, reduxForm,SubmissionError} from 'redux-form'
 import {renderTextField, renderPasswordField, renderEmailField, FieldFormControl,FieldDateTimeControl,FieldDateControl} from '../../common/components/FormElements'
 
-class LoginForm extends React.Component {
+class AddBusForm extends React.Component {
 
     constructor() {
         super();
@@ -21,21 +21,21 @@ class LoginForm extends React.Component {
             return (
 
 
-                <div className="vcenter col-xs-6 col-xs-offset-3 signup-form">
-                    <h1 className="text-center header-text-primary">LOGIN</h1>
+                <div className="add-bus-form">
+                    <h1 className="text-center header-text-primary">Add bus</h1>
+                    <h2>bus stop {this.props.bustopName}</h2>
                     <div className="space2x"></div>
                     <div className="horizontal-split-panel text-left">
-                        <div className="col-xs-12 vcenter">
+                        <div className="col-xs-12 add-bus-form">
                             <div className="col-xs-12">
                                 <form onSubmit={handleSubmit} className="auth-form">
-                                    <Field name="email" type="text" value="ali"
-                                           component={FieldFormControl} label="Email"/>
+                                    <Field name="email" type="number"
+                                           component={FieldFormControl} label="Bus number"/>
                                     <Field name="password" type="password"
-                                           component={FieldFormControl} label="Password" value="5f4dcc3b5aa765d61d8327deb882cf99"
-                                           help={<a className="forgot-password" onClick={handleForgetPassword}>Forgot your
-                                               password?</a>}/>
+                                           component={FieldFormControl} label="Time start"
+                                           help="this is to calculate arrival info"/>
                                     <div className="form-group text-center">
-                                        <button type="submit" className="action-button">Log In</button>
+                                        <button type="submit" className="btn-raised action-button">Add</button>
                                     </div>
                                     {error && <div className="error"><strong>{error}</strong></div>}
                                 </form>
@@ -61,9 +61,9 @@ const handleSuccess = (result,dispatch)=>{
 
 // Decorate the form component
 export default reduxForm({
-    form: 'loginForm', // a unique name for this form
+    form: 'addBusForm', // a unique name for this form
     returnRejectedSubmitPromise: true,
     onSubmitSuccess:handleSuccess,
 
 
-})(LoginForm);
+})(AddBusForm);

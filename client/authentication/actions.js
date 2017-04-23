@@ -44,7 +44,7 @@ export const performLogin = (login_data,dispatch,redirectUrl) =>{
                     else
                     {
                         if(current_user && current_user.is_superuser)
-                            dispatch(replace("/private/admin/active"));
+                            dispatch(replace("/private/"));
                     }
 
                     resolve(response);

@@ -1,0 +1,65 @@
+$grid-gutter-width: 10px;
+$font-size-base: 16px;
+$headings-font-weight: 800;
+$font-family: 'open sans', sans-serif;
+
+
+/**HEIGHTS**/
+
+$header-height-lg: 95px;
+$header-height-md: 90px;
+$header-height-sm: 85px;
+$header-height-xs-sm: 80px;
+$header-height-xs: 75px;
+$menu-bar-height: 44px;
+$footer-height: 45px;
+$button-height: 35px;
+$profile-image-height: 50px;
+$paragraph-line-height: 28px;
+$spacer: 20px;
+$small-paragraph-line-height: 18px;
+
+
+/** COLORS **/
+$primary-color: #f59c00;
+$secondary-color: #fd5800;
+$tertiary-color: #0b106f;
+$text-color-blue: #0c106f;
+$default-text-color: #555;
+$white-grey-color: #c3c3c2;
+$white-color:#FFF;
+$light-grey-color: #f0f0f0;
+$grey-color: #9b9b9b;
+$content-background-color: #f9f9f9;
+$error-color: #d0021b;
+$error-color-bg: rgba(208,2,27,0.15);
+$link-color-blue:#0630f8;
+$standard-border-color: #DDD;
+$border-color: #CCC;
+$show-all-color: #4a90e2;
+$sub-label-color: #777;
+
+/*** FONT-SIZES **/
+$page-title-text-size: 40px;
+$header-text-size-0: 30px;
+$header-text-size-1: 25px;
+$header-text-size-2: 23px;
+$menu-header-text-size: 15px;
+$title-text-size: 20px;
+$sub-title-text-size: 16px;
+$terms-text-size: 14px;
+$date-text-size: 13px;
+
+
+
+/** BREAK POINTS **/
+$responsive-break-xl: 1438px;
+$responsive-break-lg: 1200px;
+$responsive-break-md: 992px;
+$responsive-break-sm: 768px;
+$responsive-break-xs: 480px;
+
+
+$container-width-lg:1170px;
+$container-width-md:970px;
+$container-width-sm:750px;

@@ -1,10 +1,13 @@
-# Le Duy Khanh - TrakInvest Technical Test
+# Le Duy Khanh - Incube8 Technical Test
 
-### A simple React-Redux application with API call
+### A simple React-Redux bus application with API call
+## Requirements:
+- <code> MongoDB </code> no auth
 ## How to run:
 - <code>npm install</code>
-- <code>npm start</code>
-- visit <code>http://127.0.0.1:8080/</code>
-- click Search Icon for the full results.
-The search will show first 3 results only.
-Sample data is in <code>data.json</code>.
+- <code>npm start</code> to serve front end source
+- <code>node index.js</code> to serve backend
+- visit <code>http://127.0.0.1:3000/</code>
+- Sample log in : <code>ali@gmail.com</code>, <code>password</code>
+
+
