@@ -6,14 +6,14 @@ import { Schema, arrayOf, normalize } from 'normalizr';
 import {getJSON} from 'redux-api-middleware'
 import { replace,push } from 'react-router-redux'; // Or your redux-router equivalent
 
-export const addBus = (login_data,dispatch) =>{
+export const addBus = (ss_data,bus_data,dispatch) =>{
  
   return new Promise((resolve, reject) => {
-    let url = prepare_url_params('bus/add',[]);
+    let url = prepare_url_params('bus/add',ss_data);
     dispatch(postRequest(url,[
-        Type.LOGIN,
+        Type.ADD_BUS,
           {
-            type:Type.LOGIN_SUCCESS,
+            type:Type.ADD_BUS_SUCCESS,
 
             payload: (action, state, res) => {
 
@@ -23,13 +23,13 @@ export const addBus = (login_data,dispatch) =>{
           },
 
           {
-             type:Type.LOGIN_FAIL,
+             type:Type.ADD_BUS_FAIL,
                payload: (action, state, res) => {
                    
                    return getJSON(res).then((json) => normalize(json, { }));
 
                 }
-          }],login_data,true))
+          }],bus_data,true))
     .then(response=>{
                 // console.log(response);
                 if (response.payload.result.status =="error") {

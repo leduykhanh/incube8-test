@@ -6,8 +6,8 @@ import {getJSON} from 'redux-api-middleware'
 
 // import {companySchema} from './schema'
 
-export const fetchData = (coys_data,dispatch) =>{
-   let url = prepare_url_params('busStops',coys_data);
+export const fetchData = (ss_data,dispatch) =>{
+   let url = prepare_url_params('busStops',ss_data);
    // console.log(dispatch);
    return new Promise((resolve, reject) => {
 	  //  console.log( 

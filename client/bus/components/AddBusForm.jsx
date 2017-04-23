@@ -31,7 +31,7 @@ class AddBusForm extends React.Component {
                                 <form onSubmit={handleSubmit} className="addbus-form">
                                     <Field name="number" type="number" className="required bus-number" validate={[required]}
                                            component={FieldFormControl} label="Bus number"/>
-                                    <Field name="time-start" options={{ "time": true, "defaultValue": new Date()}}
+                                    <Field name="time_start" options={{ "time": true, "defaultValue": new Date()}}
                                            component={FieldDateControl} label="Time start" className="required" validate={[required]}
                                            help="this is to calculate arrival info"/>
                                     <div className="form-group text-center">

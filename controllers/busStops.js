@@ -40,10 +40,10 @@ busStops.getOne = function (req, res) {
 // controller that handles bus rate request
 busStops.add = function (req, res) {
 	
-	var busId = req.body.busId;
-	var rating = req.body.rating;
+	var busStopId = req.body.busStopId;
+	var busInfo = req.body.busInfo;
 
-	var busStopsData = busStopModel.add(busId, rating);
+	var busStopsData = busStopModel.add(busStopId, busInfo);
 	busStopsData.then(function(data){
 		var response = {};
 		response.status='success';

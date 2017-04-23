@@ -57,7 +57,6 @@ busStopsModel.get = function(skip, limit){
 //function to add single bus by its id.
 busStopsModel.add = function(id, buses){
 	var results = q.defer();
-	buses = parseInt(buses);
 	var error=false;
 
 	if(!id){
@@ -65,7 +64,7 @@ busStopsModel.add = function(id, buses){
 		error = true;
 	}
 	if(!buses){
-		results.reject({status:'error', error:'User buses not supplied.'});
+		results.reject({status:'error', error:'bus number not supplied.'});
 		error = true;
 	}
 

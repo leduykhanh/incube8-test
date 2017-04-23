@@ -11,9 +11,9 @@ class BusStopList extends React.Component {
             showBusListModal:false,
             showAddBusModal:false,
             showMapModal:false,
-            bustopName: ""
+            bustopName: "",
+            bus_data: {busStopId:0,number:0, time_start:""}
              };
-
     }
     closeBustList() {
         this.setState({ showBusListModal: false });
@@ -24,11 +24,14 @@ class BusStopList extends React.Component {
 
     closeAddBus() {
         this.setState({ showAddBusModal: false });
+        console.log("this.props.addBus", this.props.addBus);
+        this.props.addBus(this.props.sessionId,this.state.bus_data);
       }
-    openAddBus(name) {
+    openAddBus(name,id) {
         this.setState({ 
             showAddBusModal: true,
-            bustopName: name
+            bustopName: name,
+            bus_data: {busStopId:id,number:1, time_start:""}
          });
       }
     closeMap() {
@@ -58,7 +61,7 @@ class BusStopList extends React.Component {
                 <div className="col-xs-3">{getDistanceFromLatLonInKm(item.lat,item.lon,currentLat,currentLon)} km</div>
                 <div className="col-xs-6">
                     <Button className="btn-raised action-button"bsStyle="info" onClick={this.openBusList.bind(this)} >Show buses</Button>
-                    <Button className="btn-raised action-button" bsStyle="success" onClick={this.openAddBus.bind(this, item.name)}>Add bus</Button>
+                    <Button className="btn-raised action-button" bsStyle="success" onClick={this.openAddBus.bind(this, item.name, item._id)}>Add bus</Button>
                     <Button className="btn-raised action-button" onClick={this.openMap.bind(this)}>View map</Button></div>
             </div>);
 
@@ -68,7 +71,7 @@ class BusStopList extends React.Component {
                 <h3>Nearest Bus stops</h3>
                 {this.renderHeader()}
                 {busStopGrid}
-                <Modal show={this.state.showBusListModal} onHide={this.closeBustList.bind(this)}>
+                <Modal className="bus-list" show={this.state.showBusListModal} onHide={this.closeBustList.bind(this)}>
                     <span className="bus-number">23</span>: 23mins <br />
                     <span className="bus-number">23</span>: 23mins <br />
                     <span className="bus-number">23</span>: 23mins <br />

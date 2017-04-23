@@ -6,6 +6,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 import Loader from 'react-loader'
 import BusStopList from '../components/BusStopList'
 import {fetchData} from '../../actions'
+import {addBus} from '../actions'
 
 class BusPage extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class BusPage extends React.Component {
           <h1>Bus page</h1>
           <h5>Your current location: Latitude {this.state.lat}, Longitude {this.state.lon}</h5>
           <hr />
-          <BusStopList data={this.props.data} currentLat={this.state.lat} currentLon={this.state.lon} />
+          <BusStopList data={this.props.data} currentLat={this.state.lat} currentLon={this.state.lon} addBus={this.props.addBus} sessionId={this.props.sessionId}/>
         </div>
 
         );
@@ -51,7 +52,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 
   return {
-      fetchBusStopsI: (sessionId)=>{return fetchData({sessionId:sessionId},dispatch)}
+      fetchBusStopsI: (sessionId)=>{return fetchData({sessionId:sessionId},dispatch)},
+      addBus: (sessionId,bus_data) => {return addBus({sessionId:sessionId},bus_data,dispatch)}
   }
 }
 const mergeProps= (stateProps,dispatchProps,ownProps)=>{
