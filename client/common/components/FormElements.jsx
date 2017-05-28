@@ -26,7 +26,7 @@ export  class FieldFormControl extends Component {
 
   render () {
 
-    const { placeholder, type,after_change, input, meta,label,help,validate,className, inputGroupAddon,maxLength} = this.props;
+    const { placeholder, type,after_change, input, meta,label,help,validate,className, inputGroupAddon,maxLength,faIcon} = this.props;
 
     let divClass = meta.touched && meta.error?"form-group has-error":"form-group";
     divClass += help?" has-help":"";
@@ -40,6 +40,7 @@ export  class FieldFormControl extends Component {
       <div className={divClass} id={"id_"+input.name}>
         {label?<ControlLabel className={labelClass}>{label}</ControlLabel>:""}
         <input className={className +" form-control"} maxLength={maxLength} type={type} placeholder={placeholder} value={input.value}  onChange={(e)=>{input.onChange(e);after_change?after_change(e):"";}} onFocus={input.onFocus} onBlur={input.onBlur} />
+        {faIcon?<i className={faIcon}></i>:""}
           {inputGroupAddon?inputGroupAddon:""}
         {help && <span className="help-block">{help}</span>}
           {meta.touched && ((meta.error && <span className="error-msg"><i className="fa fa-times-circle"></i>&nbsp;{meta.error}</span>) || (meta.warning && <span  className="warning-msg">{meta.warning}</span>))}

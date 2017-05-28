@@ -24,15 +24,13 @@ class Header extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Jangkoo</a>
+              <a href="/">Home</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="/">Technical</NavItem>
-              <NavItem eventKey={2} href="/">Test</NavItem>
-              <NavItem> Hi {user&&user.username?user.username.substr(0,user.username.indexOf("@")):"Guest"}</NavItem>
+            <Nav className="pull-right">
+              <NavItem> Hi <strong>{user&&user.username?user.username.substr(0,user.username.indexOf("@")):"Guest"}</strong></NavItem>
               <NavItem> {user&&user.username?logoutButton:""}</NavItem>
             </Nav>
 

@@ -22,26 +22,20 @@ class AddBusForm extends React.Component {
 
 
                 <div className="add-bus-form">
-                    <h1 className="text-center header-text-primary">Add bus</h1>
                     <h2 className="text-center">bus stop <span className="bus-number">{this.props.bustopName} </span></h2>
                     <div className="space2x"></div>
-                    <div className="horizontal-split-panel text-left">
-                        <div className="col-xs-12 add-bus-form">
-                            <div className="col-xs-12">
-                                <form onSubmit={handleSubmit} className="addbus-form">
-                                    <Field name="number" type="number" className="required bus-number" validate={[required]}
-                                           component={FieldFormControl} label="Bus number"/>
-                                    <Field name="time_start" options={{ "time": true, "defaultValue": new Date()}}
-                                           component={FieldDateControl} label="Time start" className="required" validate={[required]}
-                                           help="this is to calculate arrival info"/>
-                                    <div className="form-group text-center">
-                                        <button type="submit" className="btn-raised action-button">Add</button>
-                                    </div>
-                                    {error && <div className="error"><strong>{error}</strong></div>}
-                                </form>
-
+                    <div className="">
+                        <form onSubmit={handleSubmit} className="addbus-form">
+                            <Field name="number" type="number" className="required bus-number" validate={[required]}
+                                   component={FieldFormControl} label="Bus number"/>
+                            <Field name="time_start" options={{ "time": true, "defaultValue": new Date()}}
+                                   component={FieldDateControl} label="Time start" className="required" validate={[required]}
+                                   help="this is to calculate arrival info"/>
+                            <div className="form-group text-center">
+                                <button type="submit" className="btn-raised action-button">Add</button>
                             </div>
-                        </div>
+                            {error && <div className="error"><strong>{error}</strong></div>}
+                        </form>
 
                     </div>
 
