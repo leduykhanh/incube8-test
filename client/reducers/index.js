@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 import { handleActions } from 'redux-actions';
 import Type from '../actions/actionTypes'
-import authenticationReducers from '../authentication/reducers'
+import authenticationReducers from '../authentication/reducers';
+import {reducer as notifications} from 'react-notification-system-redux';
 import busReducers from '../bus/reducers'
 import { reducer as formReducer } from 'redux-form'
 
@@ -20,7 +21,7 @@ const dataLoad = (state = [], action) => {
 const rootReducer = combineReducers({
   state: (state = {}) => state,
   routing: routerReducer,
-  // dataLoad,
+  notifications,
   dataLoad:busReducers,
   auth: authenticationReducers,
   form:formReducer
