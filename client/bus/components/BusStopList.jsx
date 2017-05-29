@@ -92,13 +92,13 @@ class BusStopList extends React.Component {
                     height={'394px'}
                     lat={currentLat}
                     lng={currentLon}
-                    zoom={16}
+                    zoom={18}
                     loadingMessage={this.props.title}
                     params={{v: '3.exp', key: apiKey}}
                     onMapCreated={()=> console.log("created")}>
                     <Marker
-                      lat={this.props.lat}
-                      lng={this.props.lng}
+                      lat={currentLat}
+                      lng={currentLon}
                       draggable={true}
                       onDragEnd={()=> console.log("ended")} />
                   </Gmaps>
