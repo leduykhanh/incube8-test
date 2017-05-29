@@ -2,7 +2,8 @@ import React from 'react';
 import {Button, Modal} from 'react-bootstrap'
 import AddBusForm from './AddBusForm'
 import {getDistanceFromLatLonInKm} from '../../common/util'
-import Map,{Marker} from 'google-maps-react'
+// import Map,{Marker} from 'google-maps-react';
+import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
 class BusStopList extends React.Component {
     constructor (props) {
@@ -52,6 +53,7 @@ class BusStopList extends React.Component {
         );
     }
     render() {
+        let apiKey = 'AIzaSyApBQR02RGAGuArZLQvcawvcEkXjyS4Fz8';
         let {data,currentLat,currentLon} = this.props;
         let myLatLng = {lat : currentLat, lng: currentLon};
         let busStopGrid = Array();
@@ -85,17 +87,21 @@ class BusStopList extends React.Component {
                     <AddBusForm onSubmit={this.closeAddBus.bind(this)} bustopName={this.state.bustopName}/>
                 </Modal>
                 <Modal show={this.state.showMapModal} onHide={this.closeMap.bind(this)}>
-                    <div style={{width: '100%', height: '100%', position: 'relative'} } >
-                        <Map google={window.google}
-                            initialCenter = {myLatLng}
-                            zoom = {20}
-                            mapTypeId = {google.maps.MapTypeId.ROADMAP} >
-                              <Marker
-                                name={'You are here'}
-                                position={{lat: currentLat, lng: currentLon}} />
-                              <Marker />
-                        </Map>
-                    </div>
+                  <Gmaps
+                    width={'100%'}
+                    height={'394px'}
+                    lat={currentLat}
+                    lng={currentLon}
+                    zoom={16}
+                    loadingMessage={this.props.title}
+                    params={{v: '3.exp', key: apiKey}}
+                    onMapCreated={()=> console.log("created")}>
+                    <Marker
+                      lat={this.props.lat}
+                      lng={this.props.lng}
+                      draggable={true}
+                      onDragEnd={()=> console.log("ended")} />
+                  </Gmaps>
                 </Modal>
             </div>
         );
